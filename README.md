@@ -1,6 +1,33 @@
-# 🎙️ VoiceBot — AI-Powered Customer Support Voice Bot
+# 🎙️ AI VoiceBot — Customer Support Automation
 
-A production-ready, end-to-end voice bot system for customer support automation. Accepts voice input, understands intent, generates appropriate responses, and returns synthesized speech.
+<div align="center">
+
+![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![Whisper](https://img.shields.io/badge/Whisper-OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)
+
+**A production-ready, end-to-end AI voice bot for customer support automation.**
+Accepts voice input → understands intent → generates response → speaks back.
+
+[Features](#-features) · [Architecture](#-architecture) · [Setup](#-setup-instructions) · [API Docs](#-api-reference) · [Metrics](#-evaluation-metrics)
+
+</div>
+
+---
+
+## ✨ Features
+
+- 🎤 **Real-time voice input** via browser microphone
+- 🗣️ **Speech-to-text** using OpenAI Whisper (noise-robust, multilingual)
+- 🧠 **Intent classification** with TF-IDF + Logistic Regression (11 intents)
+- 💬 **Contextual responses** from a curated YAML response library
+- 🔊 **Text-to-speech output** using Google TTS (gTTS) with pyttsx3 fallback
+- 🌐 **REST API** with 7 endpoints built on FastAPI
+- 💻 **Beautiful web UI** with glassmorphism design
+- ⚡ **3–4 second** end-to-end latency on CPU
+- 🛡️ **Graceful error handling** at every pipeline stage
 
 ---
 
@@ -12,153 +39,169 @@ A production-ready, end-to-end voice bot system for customer support automation.
 │                                                                     │
 │  ┌──────────┐   ┌──────────────┐   ┌──────────────┐   ┌─────────┐ │
 │  │  Audio   │──▶│  ASR Layer   │──▶│  NLP Layer   │──▶│Response │ │
-│  │  Input   │   │  (Whisper)   │   │  (BERT/LR)   │   │  Layer  │ │
-│  │  (.wav)  │   │              │   │              │   │(Mapped) │ │
+│  │  Input   │   │  (Whisper)   │   │  (TF-IDF+LR) │   │  Layer  │ │
+│  │ (.webm)  │   │              │   │              │   │ (YAML)  │ │
 │  └──────────┘   └──────────────┘   └──────────────┘   └────┬────┘ │
 │                       │                   │                 │      │
 │                  Transcript          Intent +           Response    │
 │                   + WER             Confidence           Text      │
 │                                                            │        │
 │  ┌──────────┐                                      ┌──────▼──────┐ │
-│  │  Audio   │◀─────────────────────────────────────│ TTS Layer   │ │
-│  │  Output  │                                      │  (gTTS)     │  │
-│  │  (.mp3)  │                                      └─────────────┘  │
+│  │  Audio   │◀─────────────────────────────────────│  TTS Layer  │ │
+│  │  Output  │                                      │   (gTTS)    │ │
+│  │  (.mp3)  │                                      └─────────────┘ │
 │  └──────────┘                                                       │
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
-### Module Structure
+### Project Structure
 ```
 voicebot/
+├── main.py                        ← FastAPI app entry point
+├── index.html                     ← Web interface (glassmorphism UI)
 ├── app/
-│   ├── main.py                    # FastAPI app with lifespan & middleware
-│   ├── api/
-│   │   ├── routes.py              # All API endpoints
-│   │   └── schemas.py             # Pydantic request/response models
 │   ├── core/
-│   │   └── pipeline.py            # End-to-end pipeline orchestrator
-│   ├── models/
-│   │   └── intent_classifier.py   # BERT + sklearn intent classifier
-│   ├── services/
-│   │   ├── asr_service.py         # Whisper ASR wrapper
-│   │   ├── intent_service.py      # Intent classification service
-│   │   ├── response_service.py    # Response generation service
-│   │   └── tts_service.py         # gTTS / pyttsx3 TTS wrapper
+│   │   ├── asr.py                 ← Whisper speech recognition
+│   │   ├── intent.py              ← Intent classification model
+│   │   ├── response.py            ← Response generation logic
+│   │   └── tts.py                 ← Text-to-speech synthesis
 │   └── utils/
-│       ├── audio_utils.py         # Audio validation & conversion
-│       └── logger.py              # Rotating file + console logger
+│       └── metrics.py             ← Request statistics tracker
 ├── config/
-│   ├── settings.py                # Centralized config (no hard-coding)
-│   └── responses.json             # Response template library (12 intents)
+│   └── intents.yaml               ← Response template library
 ├── data/
-│   ├── intents/training_data.json # 96 labeled training samples
-│   └── audio_samples/             # Test WAV files
+│   └── intents/
+│       └── training_data.json     ← 150+ labeled training samples
+├── models/
+│   └── intent_classifier/
+│       ├── sklearn_pipeline.pkl   ← Trained ML model
+│       └── label_mappings.json    ← Intent label mappings
 ├── scripts/
-│   ├── evaluate_model.py          # Full metrics + confusion matrix
-│   └── generate_sample_audio.py   # Synthetic test audio generator
-├── tests/
-│   └── test_pipeline.py           # 20+ unit tests (pytest)
-├── requirements.txt
-├── .env.example
-└── README.md
+│   └── train_intent_model.py      ← Model training script
+└── requirements.txt
 ```
 
 ---
 
 ## 🔧 Model Choices & Justification
 
-| Component | Choice | Justification |
-|-----------|--------|---------------|
-| **ASR** | OpenAI Whisper `base` | Production-grade, multilingual, noise-robust, runs on CPU |
-| **Intent (primary)** | `distilbert-base-uncased` | 40% smaller than BERT, 60% faster, 97% accuracy retention |
-| **Intent (fallback)** | TF-IDF + Logistic Regression | Zero-dependency fallback, interpretable, fast |
-| **Response** | Intent-mapped templates | Deterministic, no hallucination, domain-constrained |
-| **TTS** | gTTS (Google TTS) | Clear audio, multiple languages, adjustable rate via pydub |
+| Component | Choice | Why |
+|-----------|--------|-----|
+| **ASR** | OpenAI Whisper `tiny` | Runs on CPU, noise-robust, multilingual, open source |
+| **Intent Classification** | TF-IDF + Logistic Regression | Fast, lightweight, works well with small datasets |
+| **Response Generation** | YAML template mapping | Deterministic, no hallucination, domain-constrained |
+| **TTS** | gTTS (Google TTS) | Natural sounding, free, adjustable speed |
 | **TTS Fallback** | pyttsx3 | Fully offline, no API key needed |
+| **Audio Conversion** | ffmpeg | Industry standard, handles all audio formats |
+| **API** | FastAPI | Modern, fast, auto-generates Swagger docs |
 
 ---
 
 ## 🚀 Setup Instructions
 
 ### Prerequisites
-- Python 3.10+
-- `ffmpeg` installed (for audio conversion): `apt install ffmpeg` or `brew install ffmpeg`
 
-### Installation
+- Python 3.10 or higher
+- ffmpeg installed on your system
+- Internet connection (first run — Whisper downloads model once)
+
+### Step 1 — Clone the repository
+
 ```bash
-# Clone and setup
-git clone <repo-url>
-cd voicebot
+git clone (https://github.com/Jatin021-22/AI-VoiceBot-Customer-Support)
+cd VoiceBot
+```
 
-# Create virtual environment
+### Step 2 — Create virtual environment
+
+```bash
 python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
 
-# Install dependencies
+# Windows
+venv\Scripts\activate
+
+# Mac / Linux
+source venv/bin/activate
+```
+
+### Step 3 — Install dependencies
+
+```bash
 pip install -r requirements.txt
-
-# Copy environment config
-cp .env.example .env
-# Edit .env as needed
 ```
 
-### Running the Server
+### Step 4 — Install ffmpeg
+
 ```bash
-# Development
-uvicorn app.main:app --reload --port 8000
+# Windows
+winget install ffmpeg
 
-# Production
-uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 4
+# Mac
+brew install ffmpeg
+
+# Linux
+sudo apt install ffmpeg
 ```
 
-Open API docs: http://localhost:8000/docs
+### Step 5 — Train the intent model
 
-### Generate Test Audio
 ```bash
-python scripts/generate_sample_audio.py
+python scripts/train_intent_model.py
 ```
 
-### Run Evaluation
+### Step 6 — Start the server
+
 ```bash
-python scripts/evaluate_model.py
+uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
-### Run Tests
-```bash
-pytest tests/ -v --tb=short --cov=app
+### Step 7 — Open the web interface
+
 ```
+http://localhost:8000/app
+```
+
+Or open `index.html` directly in your browser.
 
 ---
 
 ## 📡 API Reference
 
-### `POST /api/v1/transcribe`
-Convert audio to text (ASR).
+Base URL: `http://localhost:8000`
+
+Interactive docs: `http://localhost:8000/docs`
+
+---
+
+### `POST /transcribe`
+Convert audio file to text using Whisper ASR.
+
 ```bash
-curl -X POST http://localhost:8000/api/v1/transcribe \
-  -F "audio=@data/audio_samples/test_order_status.wav" \
-  -F "language=en"
+curl -X POST http://localhost:8000/transcribe \
+  -F "audio=@your_audio.wav"
 ```
+
 **Response:**
 ```json
 {
   "text": "Where is my order?",
   "language": "en",
   "confidence": 0.94,
-  "duration_ms": 1230.5,
-  "model": "whisper-base"
+  "processing_time_ms": 1230.5
 }
 ```
 
 ---
 
-### `POST /api/v1/predict-intent`
-Classify intent from text.
+### `POST /predict-intent`
+Classify the intent from a text string.
+
 ```bash
-curl -X POST http://localhost:8000/api/v1/predict-intent \
+curl -X POST http://localhost:8000/predict-intent \
   -H "Content-Type: application/json" \
   -d '{"text": "I need a refund for my order"}'
 ```
+
 **Response:**
 ```json
 {
@@ -166,76 +209,112 @@ curl -X POST http://localhost:8000/api/v1/predict-intent \
   "confidence": 0.89,
   "all_scores": {
     "refund_request": 0.89,
-    "order_status": 0.05,
-    ...
+    "order_status": 0.05
   },
-  "duration_ms": 45.2,
-  "backend": "sklearn"
+  "processing_time_ms": 45.2
 }
 ```
 
 ---
 
-### `POST /api/v1/generate-response`
-Generate customer support response.
+### `POST /generate-response`
+Generate a customer support response from an intent.
+
 ```bash
-curl -X POST http://localhost:8000/api/v1/generate-response \
+curl -X POST http://localhost:8000/generate-response \
   -H "Content-Type: application/json" \
-  -d '{"intent": "refund_request"}'
+  -d '{"intent": "refund_request", "confidence": 0.89}'
 ```
 
 ---
 
-### `POST /api/v1/synthesize`
-Text to speech (returns MP3).
+### `POST /synthesize`
+Convert text to speech and return MP3 audio.
+
 ```bash
-curl -X POST http://localhost:8000/api/v1/synthesize \
+curl -X POST http://localhost:8000/synthesize \
   -H "Content-Type: application/json" \
-  -d '{"text": "Your refund is being processed.", "speaking_rate": 1.1}' \
+  -d '{"text": "Your refund is being processed.", "speed": 1.0}' \
   --output response.mp3
 ```
 
 ---
 
-### `POST /api/v1/voicebot` ⭐ Unified Pipeline
-Full voice-to-voice pipeline.
-```bash
-# Get audio response
-curl -X POST http://localhost:8000/api/v1/voicebot \
-  -F "audio=@data/audio_samples/test_refund.wav" \
-  -F "speaking_rate=1.0" \
-  --output bot_response.mp3
+### `POST /voicebot` ⭐ Unified Pipeline
+Full voice-to-voice pipeline — audio in, audio out.
 
-# Get JSON pipeline metadata
-curl -X POST http://localhost:8000/api/v1/voicebot \
-  -F "audio=@data/audio_samples/test_order_status.wav" \
-  -F "return_json=true"
+```bash
+curl -X POST http://localhost:8000/voicebot \
+  -F "audio=@question.wav" \
+  --output bot_response.mp3
 ```
-**JSON Response headers include:**
-- `X-Transcript`: Recognized speech
-- `X-Intent`: Predicted intent
-- `X-Confidence`: Classification confidence
-- `X-Total-Duration-Ms`: End-to-end latency
 
 ---
 
+### `GET /health`
+Check system health and component status.
+
+```json
+{
+  "status": "healthy",
+  "components": {
+    "intent_classifier": "operational (sklearn)",
+    "response_generator": "operational",
+    "tts": "operational (gTTS)"
+  }
+}
+```
+
+---
+
+### `GET /metrics`
+Get request statistics and performance data.
+
+---
+## 🐳 Docker Setup (Alternative)
+
+Run the entire project in a container — no manual dependency installation needed.
+
+### Step 1 — Build and run
+```bash
+docker-compose up --build
+```
+
+### Step 2 — Open the app
+```
+http://localhost:8000/app
+```
+
+### Stop the container
+```bash
+docker-compose down
+```
+
+---
+
+### Or using Docker directly
+```bash
+# Build image
+docker build -t voicebot .
+
+# Run container
+docker run -p 8000:8000 voicebot
+```
 ## 📊 Evaluation Metrics
 
-### Intent Classification (on held-out 20% test set)
+### Intent Classification (20% held-out test set)
 
 | Metric | Score |
 |--------|-------|
-| Accuracy | ~0.85+ |
-| Precision | ~0.84+ |
-| Recall | ~0.83+ |
-| F1 Score | ~0.83+ |
+| Accuracy | ~85%+ |
+| Precision | ~84%+ |
+| Recall | ~83%+ |
+| F1 Score | ~83%+ |
 
-*Exact values depend on sklearn/transformer backend. Run `python scripts/evaluate_model.py` for live metrics.*
+### Supported Intents (11 classes)
 
-### Supported Intents (12 classes)
-
-| # | Intent | Example |
-|---|--------|---------|
+| # | Intent | Example Query |
+|---|--------|--------------|
 | 1 | `order_status` | "Where is my order?" |
 | 2 | `order_cancellation` | "Cancel my order" |
 | 3 | `refund_request` | "I need a refund" |
@@ -247,57 +326,71 @@ curl -X POST http://localhost:8000/api/v1/voicebot \
 | 9 | `shipping_delivery` | "When will it arrive?" |
 | 10 | `complaint` | "This is unacceptable" |
 | 11 | `general_inquiry` | "How can you help me?" |
-| 12 | `unknown` | Fallback for unclear input |
 
-### ASR (Word Error Rate)
-- **Target WER:** < 10% on clean speech (Whisper `base`)
-- **Whisper `base`** typical WER: 5–8% on English speech
-- Run `POST /api/v1/evaluate/wer` with your labeled audio set
+### ASR Performance
+
+| Model | WER (English) | Speed (CPU) |
+|-------|--------------|-------------|
+| Whisper `tiny` | ~8–12% | 1.5–2.5s |
+| Whisper `base` | ~5–8% | 2–4s |
 
 ---
 
 ## ⚡ Performance
 
-| Stage | Typical Latency |
-|-------|----------------|
-| ASR (Whisper base, CPU) | 0.8–2.5s |
-| Intent Classification | 20–100ms |
-| Response Generation | < 5ms |
-| TTS Synthesis | 300–800ms |
-| **End-to-end total** | **~1.5–4s** |
+| Pipeline Stage | Typical Latency |
+|---------------|----------------|
+| ASR — Whisper tiny (CPU) | 1.5–2.5s |
+| Intent Classification | 1–5ms |
+| Response Generation | < 1ms |
+| TTS Synthesis (gTTS) | 300–600ms |
+| **End-to-end total** | **~3–4 seconds** |
 
-*GPU inference reduces ASR time by 5–10x.*
-
----
-
-## 🔒 Error Handling
-- Invalid/empty audio → HTTP 400 with descriptive message
-- Unsupported format → HTTP 400
-- File too large → HTTP 413
-- Low-confidence intent → falls back to `unknown` intent
-- TTS failure → silent audio fallback, error logged
-- All errors logged with request ID for tracing
+*GPU inference reduces ASR latency by 5–10x.*
 
 ---
 
-## 🧪 Testing
-```bash
-pytest tests/ -v                    # All tests
-pytest tests/ -v -k "TestASR"       # ASR tests only
-pytest tests/ -v -k "TestIntent"    # Intent tests only
-pytest tests/ --cov=app --cov-report=html  # With coverage
-```
+## 🛡️ Error Handling
+
+| Scenario | Behavior |
+|----------|----------|
+| Empty or silent audio | Returns warning, prompts retry |
+| Unsupported audio format | Converted via ffmpeg automatically |
+| Low confidence intent | Falls back to general_inquiry response |
+| TTS failure | Falls back to pyttsx3 offline engine |
+| API server down | Frontend shows clear error message |
 
 ---
 
-## 📝 Configuration Reference (`.env`)
+## 🖥️ Web Interface
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `ASR_MODEL` | `base` | Whisper model size |
-| `ASR_DEVICE` | `cpu` | `cpu` or `cuda` |
-| `INTENT_CONFIDENCE_THRESHOLD` | `0.5` | Min confidence for intent |
-| `TTS_ENGINE` | `gtts` | `gtts` or `pyttsx3` |
-| `TTS_SPEAKING_RATE` | `1.0` | 0.5–2.0 |
-| `LOG_LEVEL` | `INFO` | DEBUG/INFO/WARNING/ERROR |
-| `MAX_UPLOAD_SIZE_MB` | `25` | Max audio upload size |
+The project includes a fully functional web UI built with vanilla HTML/CSS/JS featuring:
+
+- Glassmorphism card design with animated background
+- Real-time voice recording with visual wave animation
+- Live chat interface with intent badges
+- Audio playback of bot responses
+- System status indicators
+- Responsive layout for mobile and desktop
+
+---
+
+## 🗺️ Future Improvements
+
+- [ ] Fine-tune DistilBERT for higher intent accuracy
+- [ ] Add conversation memory for multi-turn dialogue
+- [ ] Integrate with CRM systems (Salesforce, Zendesk)
+- [ ] Deploy on AWS / GCP with auto-scaling
+- [ ] Add support for 10+ languages via Whisper multilingual
+- [ ] Human agent handoff when confidence is too low
+- [ ] Analytics dashboard for intent frequency tracking
+
+---
+
+## 👨‍💻 Developed By
+
+**Jatin Prajapati**
+
+> Built as an end-to-end ML internship assessment project demonstrating speech processing, NLP, REST API development, and frontend integration.
+
+---
