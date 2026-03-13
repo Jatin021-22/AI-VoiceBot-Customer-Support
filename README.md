@@ -16,6 +16,9 @@ Accepts voice input → understands intent → generates response → speaks bac
 </div>
 
 ---
+## 🖼️ Preview
+
+![VoiceBot Preview](assets/index.png)
 
 ## ✨ Features
 
