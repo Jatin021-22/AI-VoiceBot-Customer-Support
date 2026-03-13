@@ -1,0 +1,31 @@
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+
+# Models (too large for GitHub)
+models/intent_classifier/sklearn_pipeline.pkl
+
+# Audio debug files
+last_recording.wav
+test_recorded.wav
+test_audio.mp3
+test_query.mp3
+*.wav
+*.mp3
+
+# Environment
+.env
+.env.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

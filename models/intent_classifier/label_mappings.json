@@ -1,0 +1,42 @@
+{
+  "id2label": {
+    "0": "order_status",
+    "1": "order_cancellation",
+    "2": "refund_request",
+    "3": "subscription_management",
+    "4": "technical_support",
+    "5": "billing_inquiry",
+    "6": "account_management",
+    "7": "product_inquiry",
+    "8": "shipping_delivery",
+    "9": "complaint",
+    "10": "general_inquiry"
+  },
+  "label2id": {
+    "order_status": 0,
+    "order_cancellation": 1,
+    "refund_request": 2,
+    "subscription_management": 3,
+    "technical_support": 4,
+    "billing_inquiry": 5,
+    "account_management": 6,
+    "product_inquiry": 7,
+    "shipping_delivery": 8,
+    "complaint": 9,
+    "general_inquiry": 10
+  },
+  "model_type": "sklearn",
+  "intents": [
+    "order_status",
+    "order_cancellation",
+    "refund_request",
+    "subscription_management",
+    "technical_support",
+    "billing_inquiry",
+    "account_management",
+    "product_inquiry",
+    "shipping_delivery",
+    "complaint",
+    "general_inquiry"
+  ]
+}

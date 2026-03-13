@@ -1,0 +1,19 @@
+2026-03-10 05:33:33 | WARNING  | voicebot.asr | openai-whisper not installed. Using mock ASR.
+2026-03-10 05:33:35 | WARNING  | voicebot.asr | Using mock ASR — install openai-whisper for real transcription
+2026-03-10 05:33:36 | WARNING  | voicebot.intent_model | Transformer training failed (No module named 'transformers'), falling back to sklearn
+2026-03-10 05:33:41 | INFO     | voicebot.intent_model | Training TF-IDF + LR classifier on 10 samples
+2026-03-10 05:33:41 | INFO     | voicebot.intent_model | Sklearn model saved to /home/claude/voicebot/models/intent_classifier/sklearn_pipeline.pkl
+2026-03-10 05:33:41 | ERROR    | voicebot.response | Failed to load response config: [Errno 2] No such file or directory: '/home/claude/voicebot/config/responses.json'
+2026-03-10 05:34:55 | WARNING  | voicebot.asr | openai-whisper not installed. Using mock ASR.
+2026-03-10 05:34:57 | WARNING  | voicebot.asr | Using mock ASR — install openai-whisper for real transcription
+2026-03-10 05:34:59 | WARNING  | voicebot.asr | Using mock ASR — install openai-whisper for real transcription
+2026-03-10 05:34:59 | WARNING  | voicebot.intent_model | Transformer training failed (No module named 'transformers'), falling back to sklearn
+2026-03-10 05:35:05 | INFO     | voicebot.intent_model | Training TF-IDF + LR classifier on 14 samples
+2026-03-10 05:35:05 | INFO     | voicebot.intent_model | Sklearn model saved to /home/claude/voicebot/models/intent_classifier/sklearn_pipeline.pkl
+2026-03-10 05:35:05 | INFO     | voicebot.response | Loaded response templates for 12 intents
+2026-03-10 05:35:16 | WARNING  | voicebot.intent_model | Transformer training failed (No module named 'transformers'), falling back to sklearn
+2026-03-10 05:35:21 | INFO     | voicebot.intent_model | Training TF-IDF + LR classifier on 72 samples
+2026-03-10 05:35:21 | INFO     | voicebot.intent_model | Sklearn model saved to /home/claude/voicebot/models/intent_classifier/sklearn_pipeline.pkl
+2026-03-10 05:35:38 | WARNING  | voicebot.intent_model | Transformer training failed (No module named 'transformers'), falling back to sklearn
+2026-03-10 05:35:42 | INFO     | voicebot.intent_model | Training TF-IDF + LR classifier on 72 samples
+2026-03-10 05:35:43 | INFO     | voicebot.intent_model | Sklearn model saved to /home/claude/voicebot/models/intent_classifier/sklearn_pipeline.pkl

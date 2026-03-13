@@ -1,0 +1,86 @@
+{
+  "order_status": {
+    "templates": [
+      "I can help you check your order status! Could you please provide your order number? Once I have it, I'll pull up the latest tracking information for you.",
+      "Sure! To look up your order, I'll need your order ID or the email address associated with your account. What would you like to provide?"
+    ],
+    "follow_up": "Is there anything else you'd like to know about your order?"
+  },
+  "order_cancellation": {
+    "templates": [
+      "I can process a cancellation request for you. Please note that orders can be cancelled within 1 hour of placement if they haven't shipped yet. Could you provide your order number?",
+      "I understand you'd like to cancel your order. To proceed, I'll need your order number and the reason for cancellation."
+    ],
+    "follow_up": "Would you like to place a new order or need any other assistance?"
+  },
+  "refund_request": {
+    "templates": [
+      "I'm sorry to hear you need a refund. Refunds are typically processed within 5-7 business days. Could you share your order number?",
+      "I understand you'd like a refund. To initiate the process, I need your order number and a brief description of the issue. Our refund policy covers items returned within 30 days."
+    ],
+    "follow_up": "Is there anything else I can help you with today?"
+  },
+  "subscription_management": {
+    "templates": [
+      "I can help you manage your subscription. Whether you'd like to upgrade, downgrade, pause, or cancel, I'm here to assist. What changes would you like to make?",
+      "Sure! I can assist with your subscription. Could you tell me whether you'd like to modify your plan, update billing information, or make another change?"
+    ],
+    "follow_up": "Is there anything else about your subscription I can clarify?"
+  },
+  "technical_support": {
+    "templates": [
+      "I'm sorry you're experiencing a technical issue. Let me help you troubleshoot. Could you describe the problem in detail — including any error messages you're seeing?",
+      "Technical issues can be frustrating — I'm here to help! Please describe what's happening, and I'll walk you through the solution step by step."
+    ],
+    "follow_up": "Did that resolve your issue, or would you like me to escalate to a specialist?"
+  },
+  "billing_inquiry": {
+    "templates": [
+      "I can help clarify your billing questions. Whether it's about a charge, invoice, or payment method, I'm here. What specific billing issue can I assist you with?",
+      "Let me look into your billing concern. Could you specify whether this is about an unexpected charge, a missed payment, or updating your payment details?"
+    ],
+    "follow_up": "Is there anything else about your billing I can help with?"
+  },
+  "account_management": {
+    "templates": [
+      "I can assist with your account. Whether it's updating your profile, changing your password, or managing preferences, just let me know what you need.",
+      "Happy to help with your account! Could you tell me what you'd like to change — email address, password, notification settings, or something else?"
+    ],
+    "follow_up": "Is your account all set, or is there anything else I can do for you?"
+  },
+  "product_inquiry": {
+    "templates": [
+      "I'd be happy to provide information about our products! Which product are you interested in, or would you like me to help you find something specific?",
+      "Great question! I can share details about features, pricing, and availability. Which product or category can I tell you about?"
+    ],
+    "follow_up": "Would you like to proceed with a purchase or have more questions?"
+  },
+  "shipping_delivery": {
+    "templates": [
+      "I can help with shipping and delivery questions. Standard delivery takes 3-5 business days, while express shipping is 1-2 days. What would you like to know?",
+      "For shipping inquiries, I can check your delivery status or explain our shipping options. Do you have an existing order to track, or a general shipping question?"
+    ],
+    "follow_up": "Is there anything else about your shipment I can assist with?"
+  },
+  "complaint": {
+    "templates": [
+      "I'm truly sorry to hear about your experience — this is not the standard we hold ourselves to. I want to make this right for you. Could you share more details about what happened?",
+      "Thank you for bringing this to our attention. Your feedback is important, and I sincerely apologize for the inconvenience. Let me do everything I can to resolve this."
+    ],
+    "follow_up": "What resolution would make you feel satisfied — a refund, replacement, or something else?"
+  },
+  "general_inquiry": {
+    "templates": [
+      "I'm here to help! Could you tell me a bit more about what you're looking for? I'll do my best to point you in the right direction.",
+      "Thanks for reaching out! I handle questions about orders, billing, subscriptions, technical issues, and more. What can I assist you with today?"
+    ],
+    "follow_up": "Is there anything specific I can clarify further?"
+  },
+  "unknown": {
+    "templates": [
+      "I'm sorry, I didn't quite catch that. Could you rephrase your question? I can help with orders, refunds, billing, subscriptions, technical support, and general inquiries.",
+      "Apologies, I'm not sure I understood your request. For the best assistance, you can also reach our human support team at support@company.com or call 1-800-SUPPORT."
+    ],
+    "follow_up": "Is there anything else I can try to help you with?"
+  }
+}

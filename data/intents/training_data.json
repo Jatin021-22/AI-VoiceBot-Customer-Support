@@ -1,0 +1,594 @@
+[
+  {
+    "text": "Where is my order?",
+    "intent": "order_status"
+  },
+  {
+    "text": "Can you track my package?",
+    "intent": "order_status"
+  },
+  {
+    "text": "What's the status of my delivery?",
+    "intent": "order_status"
+  },
+  {
+    "text": "Has my order shipped yet?",
+    "intent": "order_status"
+  },
+  {
+    "text": "When will my order arrive?",
+    "intent": "order_status"
+  },
+  {
+    "text": "I want to track order number 12345",
+    "intent": "order_status"
+  },
+  {
+    "text": "My order hasn't arrived yet",
+    "intent": "order_status"
+  },
+  {
+    "text": "Order tracking information please",
+    "intent": "order_status"
+  },
+  {
+    "text": "I'd like to cancel my order",
+    "intent": "order_cancellation"
+  },
+  {
+    "text": "Please cancel my purchase",
+    "intent": "order_cancellation"
+  },
+  {
+    "text": "How do I cancel an order?",
+    "intent": "order_cancellation"
+  },
+  {
+    "text": "Cancel order 67890 please",
+    "intent": "order_cancellation"
+  },
+  {
+    "text": "I want to stop my order from being shipped",
+    "intent": "order_cancellation"
+  },
+  {
+    "text": "Can I still cancel my recent order?",
+    "intent": "order_cancellation"
+  },
+  {
+    "text": "I need to cancel the order I placed today",
+    "intent": "order_cancellation"
+  },
+  {
+    "text": "I need a refund",
+    "intent": "refund_request"
+  },
+  {
+    "text": "How do I get my money back?",
+    "intent": "refund_request"
+  },
+  {
+    "text": "The product was damaged, I want a refund",
+    "intent": "refund_request"
+  },
+  {
+    "text": "Request refund for my order",
+    "intent": "refund_request"
+  },
+  {
+    "text": "I was charged twice, please refund me",
+    "intent": "refund_request"
+  },
+  {
+    "text": "Return my payment please",
+    "intent": "refund_request"
+  },
+  {
+    "text": "I want to return this item and get a refund",
+    "intent": "refund_request"
+  },
+  {
+    "text": "Refund policy information",
+    "intent": "refund_request"
+  },
+  {
+    "text": "I want to upgrade my subscription",
+    "intent": "subscription_management"
+  },
+  {
+    "text": "Cancel my subscription",
+    "intent": "subscription_management"
+  },
+  {
+    "text": "How do I change my plan?",
+    "intent": "subscription_management"
+  },
+  {
+    "text": "Pause my account subscription",
+    "intent": "subscription_management"
+  },
+  {
+    "text": "Downgrade to basic plan",
+    "intent": "subscription_management"
+  },
+  {
+    "text": "I need to update my subscription settings",
+    "intent": "subscription_management"
+  },
+  {
+    "text": "Renew my subscription",
+    "intent": "subscription_management"
+  },
+  {
+    "text": "My subscription expired",
+    "intent": "subscription_management"
+  },
+  {
+    "text": "The app keeps crashing",
+    "intent": "technical_support"
+  },
+  {
+    "text": "I can't log in to my account",
+    "intent": "technical_support"
+  },
+  {
+    "text": "Website is not working",
+    "intent": "technical_support"
+  },
+  {
+    "text": "Error message on checkout page",
+    "intent": "technical_support"
+  },
+  {
+    "text": "My payment is not going through",
+    "intent": "technical_support"
+  },
+  {
+    "text": "I need help with a technical issue",
+    "intent": "technical_support"
+  },
+  {
+    "text": "The app won't load",
+    "intent": "technical_support"
+  },
+  {
+    "text": "404 error on your website",
+    "intent": "technical_support"
+  },
+  {
+    "text": "Why was I charged this amount?",
+    "intent": "billing_inquiry"
+  },
+  {
+    "text": "I have a question about my invoice",
+    "intent": "billing_inquiry"
+  },
+  {
+    "text": "Incorrect charge on my account",
+    "intent": "billing_inquiry"
+  },
+  {
+    "text": "Update my payment method",
+    "intent": "billing_inquiry"
+  },
+  {
+    "text": "My credit card was declined",
+    "intent": "billing_inquiry"
+  },
+  {
+    "text": "I need my receipt",
+    "intent": "billing_inquiry"
+  },
+  {
+    "text": "Billing statement inquiry",
+    "intent": "billing_inquiry"
+  },
+  {
+    "text": "Why is my bill so high this month?",
+    "intent": "billing_inquiry"
+  },
+  {
+    "text": "I need to change my email address",
+    "intent": "account_management"
+  },
+  {
+    "text": "Reset my password",
+    "intent": "account_management"
+  },
+  {
+    "text": "Update my account details",
+    "intent": "account_management"
+  },
+  {
+    "text": "I can't access my account",
+    "intent": "account_management"
+  },
+  {
+    "text": "Delete my account",
+    "intent": "account_management"
+  },
+  {
+    "text": "Change my username",
+    "intent": "account_management"
+  },
+  {
+    "text": "Two factor authentication setup",
+    "intent": "account_management"
+  },
+  {
+    "text": "I forgot my password",
+    "intent": "account_management"
+  },
+  {
+    "text": "Tell me about your products",
+    "intent": "product_inquiry"
+  },
+  {
+    "text": "What features does the pro plan include?",
+    "intent": "product_inquiry"
+  },
+  {
+    "text": "How much does the premium version cost?",
+    "intent": "product_inquiry"
+  },
+  {
+    "text": "Is this product available in blue?",
+    "intent": "product_inquiry"
+  },
+  {
+    "text": "Difference between basic and premium",
+    "intent": "product_inquiry"
+  },
+  {
+    "text": "What are your best selling products?",
+    "intent": "product_inquiry"
+  },
+  {
+    "text": "Product specifications please",
+    "intent": "product_inquiry"
+  },
+  {
+    "text": "Do you have this in stock?",
+    "intent": "product_inquiry"
+  },
+  {
+    "text": "When will my package be delivered?",
+    "intent": "shipping_delivery"
+  },
+  {
+    "text": "What are your shipping options?",
+    "intent": "shipping_delivery"
+  },
+  {
+    "text": "Do you offer express delivery?",
+    "intent": "shipping_delivery"
+  },
+  {
+    "text": "My package was marked delivered but I didn't receive it",
+    "intent": "shipping_delivery"
+  },
+  {
+    "text": "International shipping cost",
+    "intent": "shipping_delivery"
+  },
+  {
+    "text": "Change my delivery address",
+    "intent": "shipping_delivery"
+  },
+  {
+    "text": "How long does standard shipping take?",
+    "intent": "shipping_delivery"
+  },
+  {
+    "text": "Free shipping threshold",
+    "intent": "shipping_delivery"
+  },
+  {
+    "text": "I am very unhappy with the service",
+    "intent": "complaint"
+  },
+  {
+    "text": "This is unacceptable, I want to speak to a manager",
+    "intent": "complaint"
+  },
+  {
+    "text": "Your service is terrible",
+    "intent": "complaint"
+  },
+  {
+    "text": "I've been waiting for weeks and nothing happened",
+    "intent": "complaint"
+  },
+  {
+    "text": "You sent me the wrong item",
+    "intent": "complaint"
+  },
+  {
+    "text": "I'm extremely disappointed with my experience",
+    "intent": "complaint"
+  },
+  {
+    "text": "This product is defective",
+    "intent": "complaint"
+  },
+  {
+    "text": "I want to file a formal complaint",
+    "intent": "complaint"
+  },
+  {
+    "text": "Hello, how can you help me?",
+    "intent": "general_inquiry"
+  },
+  {
+    "text": "What services do you offer?",
+    "intent": "general_inquiry"
+  },
+  {
+    "text": "I have a question",
+    "intent": "general_inquiry"
+  },
+  {
+    "text": "Can you help me with something?",
+    "intent": "general_inquiry"
+  },
+  {
+    "text": "What are your business hours?",
+    "intent": "general_inquiry"
+  },
+  {
+    "text": "How do I contact customer support?",
+    "intent": "general_inquiry"
+  },
+  {
+    "text": "I need assistance",
+    "intent": "general_inquiry"
+  },
+  {
+    "text": "What is your return policy?",
+    "intent": "general_inquiry"
+  },
+  {
+    "text": "asdfghjkl",
+    "intent": "unknown"
+  },
+  {
+    "text": "random words testing system",
+    "intent": "unknown"
+  },
+  {
+    "text": "blah blah blah",
+    "intent": "unknown"
+  },
+  {
+    "text": "xyzzy foobar",
+    "intent": "unknown"
+  },
+  {
+    "text": "where is my order",
+    "intent": "order_status"
+  },
+  {
+    "text": "track my package",
+    "intent": "order_status"
+  },
+  {
+    "text": "order not received",
+    "intent": "order_status"
+  },
+  {
+    "text": "check delivery status",
+    "intent": "order_status"
+  },
+  {
+    "text": "is my order shipped",
+    "intent": "order_status"
+  },
+  {
+    "text": "order tracking number",
+    "intent": "order_status"
+  },
+  {
+    "text": "when will I receive my order",
+    "intent": "order_status"
+  },
+  {
+    "text": "stop my order",
+    "intent": "order_cancellation"
+  },
+  {
+    "text": "I want to cancel",
+    "intent": "order_cancellation"
+  },
+  {
+    "text": "cancel my recent order",
+    "intent": "order_cancellation"
+  },
+  {
+    "text": "do not ship my order",
+    "intent": "order_cancellation"
+  },
+  {
+    "text": "cancel order please",
+    "intent": "order_cancellation"
+  },
+  {
+    "text": "I need a refund please",
+    "intent": "refund_request"
+  },
+  {
+    "text": "return my money",
+    "intent": "refund_request"
+  },
+  {
+    "text": "get refund for damaged item",
+    "intent": "refund_request"
+  },
+  {
+    "text": "refund my purchase",
+    "intent": "refund_request"
+  },
+  {
+    "text": "money back guarantee",
+    "intent": "refund_request"
+  },
+  {
+    "text": "change my plan",
+    "intent": "subscription_management"
+  },
+  {
+    "text": "cancel subscription please",
+    "intent": "subscription_management"
+  },
+  {
+    "text": "upgrade to premium",
+    "intent": "subscription_management"
+  },
+  {
+    "text": "pause my membership",
+    "intent": "subscription_management"
+  },
+  {
+    "text": "renew my plan",
+    "intent": "subscription_management"
+  },
+  {
+    "text": "website not working",
+    "intent": "technical_support"
+  },
+  {
+    "text": "app keeps crashing",
+    "intent": "technical_support"
+  },
+  {
+    "text": "cannot login to account",
+    "intent": "technical_support"
+  },
+  {
+    "text": "page not loading",
+    "intent": "technical_support"
+  },
+  {
+    "text": "getting error message",
+    "intent": "technical_support"
+  },
+  {
+    "text": "explain my bill",
+    "intent": "billing_inquiry"
+  },
+  {
+    "text": "wrong amount charged",
+    "intent": "billing_inquiry"
+  },
+  {
+    "text": "billing problem",
+    "intent": "billing_inquiry"
+  },
+  {
+    "text": "invoice question",
+    "intent": "billing_inquiry"
+  },
+  {
+    "text": "payment not processed",
+    "intent": "billing_inquiry"
+  },
+  {
+    "text": "reset my password",
+    "intent": "account_management"
+  },
+  {
+    "text": "change my email",
+    "intent": "account_management"
+  },
+  {
+    "text": "update account info",
+    "intent": "account_management"
+  },
+  {
+    "text": "locked out of account",
+    "intent": "account_management"
+  },
+  {
+    "text": "delete my account",
+    "intent": "account_management"
+  },
+  {
+    "text": "product price",
+    "intent": "product_inquiry"
+  },
+  {
+    "text": "what do you sell",
+    "intent": "product_inquiry"
+  },
+  {
+    "text": "product features",
+    "intent": "product_inquiry"
+  },
+  {
+    "text": "is this available",
+    "intent": "product_inquiry"
+  },
+  {
+    "text": "how much does it cost",
+    "intent": "product_inquiry"
+  },
+  {
+    "text": "shipping time",
+    "intent": "shipping_delivery"
+  },
+  {
+    "text": "package not delivered",
+    "intent": "shipping_delivery"
+  },
+  {
+    "text": "delivery address change",
+    "intent": "shipping_delivery"
+  },
+  {
+    "text": "express shipping available",
+    "intent": "shipping_delivery"
+  },
+  {
+    "text": "free shipping",
+    "intent": "shipping_delivery"
+  },
+  {
+    "text": "very bad service",
+    "intent": "complaint"
+  },
+  {
+    "text": "I am very angry",
+    "intent": "complaint"
+  },
+  {
+    "text": "this is unacceptable",
+    "intent": "complaint"
+  },
+  {
+    "text": "want to complain",
+    "intent": "complaint"
+  },
+  {
+    "text": "worst experience ever",
+    "intent": "complaint"
+  },
+  {
+    "text": "I need help",
+    "intent": "general_inquiry"
+  },
+  {
+    "text": "can you assist me",
+    "intent": "general_inquiry"
+  },
+  {
+    "text": "general question",
+    "intent": "general_inquiry"
+  },
+  {
+    "text": "what are your hours",
+    "intent": "general_inquiry"
+  },
+  {
+    "text": "contact customer support",
+    "intent": "general_inquiry"
+  }
+]

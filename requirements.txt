@@ -1,0 +1,43 @@
+# ── Core API Framework ─────────────────────────────────────────
+fastapi==0.115.5
+uvicorn[standard]==0.32.1
+python-multipart==0.0.20
+pydantic==2.10.3
+
+# ── ASR ───────────────────────────────────────────────────────
+openai-whisper==20240930       # Whisper ASR model
+torch==2.1.2                   # Required by Whisper (CPU build)
+torchaudio==2.1.2
+
+# ── NLP / Intent Classification ───────────────────────────────
+transformers==4.46.3           # HuggingFace BERT / DistilBERT
+datasets==3.1.0
+scikit-learn==1.5.2            # TF-IDF + LR fallback + metrics
+numpy==1.26.4
+
+# ── TTS ───────────────────────────────────────────────────────
+gTTS==2.5.3                    # Google Text-to-Speech
+pyttsx3==2.90                  # Offline TTS fallback
+pydub==0.25.1                  # Audio processing / speed adjustment
+
+# ── Audio Processing ──────────────────────────────────────────
+soundfile==0.12.1
+librosa==0.10.2                # Audio feature extraction
+ffmpeg-python==0.2.0           # Format conversion wrapper
+
+# ── Evaluation & Visualization ────────────────────────────────
+matplotlib==3.9.3
+seaborn==0.13.2
+jiwer==3.0.4                   # WER / CER computation
+
+# ── Utilities ─────────────────────────────────────────────────
+python-dotenv==1.0.1
+pydantic-settings==2.6.1
+aiofiles==24.1.0
+httpx==0.28.0
+
+# ── Development / Testing ─────────────────────────────────────
+pytest==8.3.4
+pytest-asyncio==0.24.0
+pytest-cov==6.0.0
+httpx==0.28.0
