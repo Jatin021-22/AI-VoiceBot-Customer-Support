@@ -394,6 +394,6 @@ The project includes a fully functional web UI built with vanilla HTML/CSS/JS fe
 
 **Jatin Prajapati**
 
-> Built as an end-to-end ML internship assessment project demonstrating speech processing, NLP, REST API development, and frontend integration.
+> Built as an end-to-end ML project demonstrating speech processing, NLP, REST API development, and frontend integration.
 
 ---
